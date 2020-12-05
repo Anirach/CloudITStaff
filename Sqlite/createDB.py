@@ -6,7 +6,7 @@ def sql_connection():
 
     try:
 
-        con = sqlite3.connect('mydatabase.db')
+        con = sqlite3.connect('./Sqlite/mydatabase.db')
 
         return con
 
