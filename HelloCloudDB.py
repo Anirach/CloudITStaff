@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
 #Staff Class/Model
-class Staff(db.Model):
+class Staffs(db.Model):
     id = db.Column(db.String(13), primary_key=True, unique=True)
     name = db.Column(db.String(50))
     email = db.Column(db.String(25))
@@ -43,7 +43,7 @@ def add_staff():
     email = request.json['email']
     phone = request.json['phone']
 
-    new_staff = Staff(id, name, email, phone)
+    new_staff = Staffs(id, name, email, phone)
 
     db.session.add(new_staff)
     db.session.commit()
@@ -53,20 +53,20 @@ def add_staff():
 # Get All Staffs
 @app.route('/staffs', methods=['GET'])
 def get_staffs():
-    all_staffs = Staff.query.all()
+    all_staffs = Staffs.query.all()
     result = staffs_schema.dump(all_staffs)
     return jsonify(result)
 
 # Get Single Staff
 @app.route('/staff/<id>', methods=['GET'])
 def get_staff(id):
-    staff = Staff.query.get(id)
+    staff = Staffs.query.get(id)
     return staff_schema.jsonify(staff)
 
 # Update a Staff
 @app.route('/staff/<id>', methods=['PUT'])
 def update_staff(id):
-    staff = Staff.query.get(id)
+    staff = Staffs.query.get(id)
     
     name = request.json['name']
     email = request.json['email']
@@ -83,7 +83,7 @@ def update_staff(id):
 # Delete Staff
 @app.route('/staff/<id>', methods=['DELETE'])
 def delete_staff(id):
-    staff = Staff.query.get(id)
+    staff = Staffs.query.get(id)
     db.session.delete(staff)
     db.session.commit()
     
