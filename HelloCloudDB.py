@@ -92,7 +92,7 @@ def delete_staff(id):
 
 @app.route('/', methods=['GET'])
 def get():
-    return jsonify({'ms': 'Hello Cloud DB'})
+    return jsonify({'ms': 'Hello Cloud DB1'})
 
 # Run Server
 if __name__ == "__main__":
