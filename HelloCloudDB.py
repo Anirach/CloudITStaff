@@ -78,7 +78,7 @@ def update_staff(id):
 
     db.session.commit()
 
-    return product_schema.jsonify(staff)
+    return staff_schema.jsonify(staff)
 
 # Delete Staff
 @app.route('/staff/<id>', methods=['DELETE'])
